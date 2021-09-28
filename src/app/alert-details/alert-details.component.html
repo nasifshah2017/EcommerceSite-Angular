@@ -1,0 +1,19 @@
+<p *ngIf="x.price < 700">Course is available for discount</p>
+
+<!-- If product is more than 0 then render template 1, else render template 2 -->
+
+<ng-container *ngIf="x.quantity > 0 then template1 else template2"></ng-container>
+
+<ng-template #template1>
+    <button class="btn btn-primary" [disabled]=isUnchanged (click)="clickChildMe()">
+        Check Availability
+    </button>
+</ng-template>
+
+<ng-template #template2>
+    <p>Product is not available to buy</p>
+</ng-template>
+
+<!-- all ng tags like ng-container, ng-template are all Angular specific tags,
+we could have also used the div tag instead of the ng-container tag but 
+Angular prefers ng tags to perform comfortably -->

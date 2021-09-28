@@ -1,0 +1,108 @@
+<!--<p>cart-items works!</p>
+
+<h2>{{products[0].name}}</h2>-->
+<div class="my-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th class="text-center">Price</th>
+                            <th class="text-center">Total</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Iteration Definition -->
+                        <tr *ngFor="let x of products">
+                            <td class="col-sm-8 col-md-6">
+                                <div class="media">
+                                    <a class="thumbnail pull-left" href="#"> <img class="media-object"
+                                            src={{x.imgaddress}} style="width: 72px; height: 72px;"> </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><a href="#"><strong>{{x.name}}</strong></a></h4>
+                                        <span>Status: </span><span
+                                            class="text-success"><strong>{{x.status}}</strong></span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="col-sm-1 col-md-1" style="text-align: center">
+                                <input #quantity (keyup)="onKey(x, quantity.value)" type="email" class="form-control"
+                                    id="exampleInputEmail1" value="1">
+                            </td>
+                            <td class="col-sm-1 col-md-1 text-center"><strong>{{x.price}}</strong></td>
+                            <!-- Multiplying the price of the product with the quantity of the product selected by the user to get the total price -->
+                            <td class="col-sm-1 col-md-1 text-center"><strong>{{x.price * quantity.value}}</strong></td>
+                            <td class="col-sm-1 col-md-1">
+                                <button type="button" (click)="deleteProduct(x)" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-remove"></span> Remove
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                                <h5>Subtotal</h5>
+                            </td>
+                            <td class="text-right">
+                                <h5><strong>{{sum}}</strong></h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                                <h5>Estimated shipping</h5>
+                            </td>
+                            <td class="text-right">
+                                <h5><strong>{{shippingPrice}}</strong></h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                                <h3>Total</h3>
+                            </td>
+                            <td class="text-right">
+                                <h3><strong>{{totalPrice}}</strong></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                                <button type="button" routerLink="/products" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" routerLink="/checkout" class="btn btn-success">
+                                    Checkout <span class="glyphicon glyphicon-play"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- onKey(): Whenever the user is trying to type something on the field then 
+    this method will get executed -->
+
+<!-- onKey(x, quantity.value): We are also sending the "x" which represents 
+the particular product, whose quantity field the user is chnaging and depending 
+on the quantity the onKey function will update the price of the products and the 
+subtotal and we are also sending the quantity.value as an argument with x so that 
+the program can calculate the update -->
